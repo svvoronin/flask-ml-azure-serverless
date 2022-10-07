@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
 from flask.logging import create_logger
 import logging
-
 import pandas as pd
-# from sklearn.externals import joblib
-import joblib
+from sklearn.externals import joblib
+#import joblib
 from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
@@ -72,7 +71,6 @@ def predict():
     scaled_payload = scale(inference_payload)
     prediction = list(clf.predict(scaled_payload))
     return jsonify({'prediction': prediction})
-    # return jsonify({'prediction': "Hello"})
 
 
 if __name__ == "__main__":
